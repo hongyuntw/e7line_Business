@@ -33,6 +33,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] , 'namespace' => 'Ad
     Route::get('/announcements/{announcement}/edit','AnnouncementController@edit')->name('admin_announcement.edit');
     Route::get('/announcements','AnnouncementController@index')->name('admin_announcement.index');
 
+//    info
+    Route::get('/info/create','InfoController@create')->name('admin_info.create');
+    Route::post('/info/store','InfoController@store')->name('admin_info.store');
+    Route::post('/info/{announcement}/update','InfoController@update')->name('admin_info.update');
+    Route::get('/info/{announcement}/edit','InfoController@edit')->name('admin_info.edit');
+    Route::get('/info','InfoController@index')->name('admin_info.index');
+
+
+
 
 // vote
     Route::get('/votes/create','VoteController@create')->name('admin_vote.create');

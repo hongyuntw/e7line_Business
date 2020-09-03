@@ -42,14 +42,14 @@
             <li class="treeview{{ (request()->is('products*'))? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-address-book"></i>
-                    <span>使用者管理</span>
+                    <span>管理員</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('admin_users.index')}}">使用者列表</a></li>
-                    <li><a href="{{route('admin_users.create')}}">新增使用者</a></li>
+                    <li><a href="{{route('admin_users.index')}}">管理員列表</a></li>
+                    <li><a href="{{route('admin_users.create')}}">新增管理員</a></li>
                 </ul>
 
                 <a href="#">
@@ -63,6 +63,17 @@
                     <li><a href="{{route('admin_announcement.index')}}">公告列表</a></li>
                     <li><a href="{{route('admin_announcement.create')}}">新增公告</a></li>
                 </ul>
+                <a href="#">
+                    <i class="fa fa-address-book"></i>
+                    <span>規定</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('admin_info.index')}}">規定列表</a></li>
+                    <li><a href="{{route('admin_info.create')}}">新增規定</a></li>
+                </ul>
 
                 <a href="#">
                     <i class="fa fa-address-book"></i>
@@ -75,6 +86,7 @@
                     <li><a href="{{route('admin_vote.index')}}">投票列表</a></li>
                     <li><a href="{{route('admin_vote.create')}}">新增投票</a></li>
                 </ul>
+
 
 
 

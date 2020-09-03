@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', '使用者列表')
+@section('title', '管理員列表')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -8,12 +8,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                使用者列表
+                管理員列表
                 <small></small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-shopping-bag"></i>使用者管理</a></li>
-                <li class="active">使用者列表</li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i>管理員</a></li>
+                <li class="active">管理員列表</li>
             </ol>
         </section>
 

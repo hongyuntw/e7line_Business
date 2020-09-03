@@ -1,16 +1,16 @@
 @extends('admin.layouts.master')
 
-@section('title', '新增使用者')
+@section('title', '新增管理員')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <H1>新增使用者</H1>
+            <H1>新增管理員</H1>
             <ol class="breadcrumb">
-                <li><a href="{{route('admin_users.index')}}"><i class="fa fa-shopping-bag"></i> 使用者管理</a></li>
-                <li class="active">新增使用者</li>
+                <li><a href="{{route('admin_users.index')}}"><i class="fa fa-shopping-bag"></i> 管理員</a></li>
+                <li class="active">新增管理員</li>
             </ol>
         </section>
 

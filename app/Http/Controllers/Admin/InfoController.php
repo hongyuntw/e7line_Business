@@ -7,14 +7,13 @@ use App\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
-class AnnouncementController extends Controller
+class InfoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
@@ -29,7 +28,7 @@ class AnnouncementController extends Controller
         $sortBy = 'create_date';
         $type_filter = -1;
 
-        $query->where('type','<=',2);
+        $query->where('type','>',2);
 
         if ($request->has('sortBy')) {
             $sortBy = $request->input('sortBy');
@@ -86,9 +85,10 @@ class AnnouncementController extends Controller
             'sortBy_text' => $sortBy_text,
         ];
 
-        return view('admin.announcement.index',$data);
+        return view('admin.info.index',$data);
 
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -106,7 +106,7 @@ class AnnouncementController extends Controller
             'companies' => $companies,
         ];
 
-        return view('admin.announcement.create',$data);
+        return view('admin.info.create',$data);
     }
 
     /**
@@ -119,7 +119,6 @@ class AnnouncementController extends Controller
     {
         //
         $this->validate($request, [
-            'type' => 'required',
             'content' => 'required',
             'title' => 'required',
         ]);
@@ -130,12 +129,12 @@ class AnnouncementController extends Controller
             'content' => $request->input('content'),
             'user_id'=> Auth::user()->id,
             'company_id' => Auth::user()->company->id,
-            'type' => $request->input('type'),
+            'type' => 3,
             'create_date' => now(),
             'update_date' => now(),
         ]);
 
-        return redirect()->route('admin_announcement.index');
+        return redirect()->route('admin_info.index');
 
 
     }
@@ -167,7 +166,7 @@ class AnnouncementController extends Controller
             'source_html' => $request->input('source_html'),
         ];
 
-        return view('admin.announcement.edit' , $data);
+        return view('admin.info.edit' , $data);
     }
 
     /**
@@ -181,12 +180,10 @@ class AnnouncementController extends Controller
     {
         //
         $this->validate($request, [
-            'type' => 'required',
             'content' => 'required',
             'title' => 'required',
         ]);
 
-        $announcement->type = $request->input('type');
         $announcement->content = $request->input('content');
         $announcement->title = $request->input('title');
         $announcement->update_date = now();
