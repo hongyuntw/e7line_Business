@@ -55,4 +55,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/', function () {
+    if(Auth::check()) {
+        if(Auth::user()->type == 1)
+        return redirect('/admin/');
+    }
+    else {
+        return view('auth.login');
+    }
+});
+
 
