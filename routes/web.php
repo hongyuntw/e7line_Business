@@ -15,6 +15,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] , 'namespace' => 'Ad
     Route::get('/','DashboardController@index')->name('admin_dashboard.index');
 
 
+//    User
+    Route::get('users','UserController@index')->name('admin_users.index');
+    Route::get('users/create', 'UserController@create')->name('admin_users.create');
+    Route::post('users/store', 'UserController@store')->name('admin_users.store');
+    Route::get('users/{user}/edit', 'UserController@edit')->name('admin_users.edit');
+    Route::post('users/{user}/update', 'UserController@update')->name('admin_users.update');
+
+
+
 
 //    announcement
 
@@ -29,7 +38,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] , 'namespace' => 'Ad
     Route::get('/votes/create','VoteController@create')->name('admin_vote.create');
     Route::post('/votes/store','VoteController@store')->name('admin_vote.store');
     Route::post('/votes/{vote}/update','VoteController@update')->name('admin_vote.update');
+    Route::post('/votes/{vote}/submitVote','VoteController@submitVote')->name('admin_vote.submitVote');
+
     Route::get('/votes/{vote}/edit','VoteController@edit')->name('admin_vote.edit');
+    Route::get('/votes/{vote}/vote','VoteController@vote')->name('admin_vote.vote');
+    Route::get('/votes/{vote}/result','VoteController@result')->name('admin_vote.result');
+
     Route::get('/votes','VoteController@index')->name('admin_vote.index');
 
 

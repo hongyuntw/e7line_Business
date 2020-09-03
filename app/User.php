@@ -31,4 +31,17 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Company::class);
     }
+
+//    創立一個投票
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
+
+//    投了哪些票
+    public function  vote_details()
+    {
+        return $this->hasMany(VoteDetail::class);
+    }
+
 }

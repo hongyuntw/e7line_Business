@@ -29,90 +29,79 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            {{--                            <div class="row">--}}
-                            {{--                                <form name="filter_form" action="{{route('mails.index')}}" method="get">--}}
-                            {{--                                    --}}
-                            {{--                                    <div class="col-md-2 col-3">--}}
-                            {{--                                        <label>在職狀態篩選</label>--}}
-                            {{--                                        <select name="is_left"--}}
-                            {{--                                                class="form-control form-control-sm">--}}
-                            {{--                                            @foreach(['-1','0','1'] as $col)--}}
-                            {{--                                                <option @if($col==$is_left) selected--}}
-                            {{--                                                        @endif value="{{$col}}">{{$status_text[$loop->index]}}</option>--}}
-                            {{--                                            @endforeach--}}
-                            {{--                                        </select>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="col-md-2 col-3">--}}
-                            {{--                                        <label>收信狀態篩選</label>--}}
-                            {{--                                        <select  name="want_receive_mail"--}}
-                            {{--                                                 class="form-control form-control-sm">--}}
-                            {{--                                            @foreach(['-1','1','0'] as $col)--}}
-                            {{--                                                <option @if($col==$want_receive_mail) selected--}}
-                            {{--                                                        @endif value="{{$col}}">@if($col==-1)---@elseif($col==1)是@else否@endif</option>--}}
-                            {{--                                            @endforeach--}}
-                            {{--                                        </select>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="col-md-2 col-3">--}}
-                            {{--                                        <label>排序方式</label>--}}
-                            {{--                                        <select multiple name="sortBy[]" class="form-control form-control-sm">--}}
-                            {{--                                            @foreach(['create_date','name','customer_name','is_left','area','want_receive_mail'] as $col)--}}
-                            {{--                                                <option @if(is_array($sortBy))--}}
-                            {{--                                                        @if(in_array($col, $sortBy))--}}
-                            {{--                                                        selected--}}
-                            {{--                                                        @endif--}}
-                            {{--                                                        @endif value="{{$col}}">{{$sortBy_text[$loop->index]}}</option>--}}
-                            {{--                                            @endforeach--}}
-                            {{--                                        </select>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="col-md-1 col-3">--}}
-                            {{--                                        <label>篩選按鈕</label><br>--}}
-                            {{--                                        <button type="submit" class="w-100 btn btn-sm bg-blue">Filter</button>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </form>--}}
-                            {{--                                <div class="col-md-3 col-3">--}}
-                            {{--                                    <label>搜尋</label><br>--}}
-                            {{--                                    <!-- search form (Optional) -->--}}
-                            {{--                                    <form roe="form" action="{{route('mails.index')}}" method="get">--}}
-                            {{--                                        <div class="form-inline">--}}
-                            {{--                                            <select name="search_type" class="form-group form-control">--}}
-                            {{--                                                <option value="1" @if(request()->get('search_type')==1) selected @endif>--}}
-                            {{--                                                    姓名--}}
-                            {{--                                                </option>--}}
-                            {{--                                                <option value="2" @if(request()->get('search_type')==2) selected @endif>--}}
-                            {{--                                                    公司(客戶)--}}
-                            {{--                                                </option>--}}
-                            {{--                                                <option value="3" @if(request()->get('search_type')==3) selected @endif>--}}
-                            {{--                                                    地區--}}
-                            {{--                                                </option>--}}
-                            {{--                                            </select>--}}
-                            {{--                                            <br>--}}
-                            {{--                                            <div class="inline">--}}
-                            {{--                                                <input type="text" name="search_info" class="form-control"--}}
-                            {{--                                                       placeholder="Search..." value="@if(request()->get('search_info')) {{request()->get('search_info')}} @endif">--}}
-                            {{--                                                <button type="submit" id="search-btn" style="cursor: pointer"--}}
-                            {{--                                                        class="btn btn-flat"><i class="fa fa-search"></i>--}}
-                            {{--                                                </button>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                        <input hidden name="is_left" value="{{$is_left}}">--}}
-                            {{--                                        <input hidden name="want_receive_mail" value="{{$want_receive_mail}}">--}}
+                            <div class="row">
+                                <form name="filter_form" action="{{route('admin_announcement.index')}}" method="get">
+                                    <div class="col-md-2">
+                                        <label>公告類型</label>
+                                        <select name="type_filter" class="form-control form-control-sm">
+                                            <option value="-1" @if(-1==$type_filter) selected
+                                                    @endif>All
+                                            </option>
+                                            <option value="0"  @if(0==$type_filter) selected @endif>通知</option>
+                                            <option value="1" @if(1==$type_filter) selected @endif>活動</option>
 
-                            {{--                                        <select multiple name="sortBy[]" hidden>--}}
-                            {{--                                            @if(request()->get('sortBy'))--}}
-                            {{--                                                @foreach(request()->get('sortBy') as $col)--}}
-                            {{--                                                    <option selected value="{{$col}}"></option>--}}
-                            {{--                                                @endforeach--}}
-                            {{--                                            @endif--}}
-                            {{--                                        </select>--}}
-                            {{--                                    </form>--}}
-                            {{--                                    <!-- /.search form -->--}}
+                                        </select>
 
-                            {{--                                </div>--}}
-                            {{--                                <div class="col-md-1 col-3">--}}
-                            {{--                                    <label>特殊功能</label><br>--}}
-                            {{--                                    <a class="btn btn-success btn-sm" href="{{route('mails.export',request()->input())}}">Export</a>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>From</label>
+
+
+                                        <input type="date" class="form-control" name="date_from"
+                                               value="@if($date_from != null){{($date_from)}}@endif">
+                                        <label>To</label>
+                                        <input type="date" class="form-control" name="date_to"
+                                               value="@if($date_to != null){{$date_to}}@endif">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>排序方式 </label>
+                                        <select name="sortBy" class="form-control form-control-sm">
+                                            @foreach(['create_date'] as $col)
+                                                <option @if($sortBy == $col) selected
+                                                        @endif value="{{$col}}">{{$sortBy_text[$loop->index]}}</option>
+                                            @endforeach
+                                        </select>
+                                        <button type="submit" class=" btn btn-sm bg-blue" style="width: 100%">篩選
+                                        </button>
+                                    </div>
+
+                                </form>
+                                <div class="col-md-3 col-3">
+                                    <label>搜尋</label><br>
+                                    <!-- search form (Optional) -->
+                                    <form roe="form" action="{{route('admin_announcement.index')}}" method="get">
+                                        <div class="form-inline">
+                                            <select name="search_type" class="form-group form-control">
+                                                <option value="1" @if(request()->get('search_type')==1) selected @endif>
+                                                    標題
+                                                </option>
+                                            </select>
+                                            <br>
+                                            <div class="inline">
+                                                <input type="text" name="search_info" class="form-control"
+                                                       placeholder="Search..."
+                                                       value="@if(request()->get('search_info')) {{request()->get('search_info')}} @endif">
+                                                <button type="submit" id="search-btn" style="cursor: pointer"
+                                                        class="btn btn-flat"><i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <input hidden name="date_from" value="{{$date_from}}">
+                                        <input hidden name="date_to" value="{{$date_to}}">
+                                        <input hidden name="sortBy" value="{{$sortBy}}">
+                                        <input hidden name="type_filter" value="{{$type_filter}}">
+
+
+
+                                    </form>
+                                    <!-- /.search form -->
+
+                                </div>
+
+                            </div>
+
 
 
                         </div>

@@ -42,14 +42,14 @@
             <li class="treeview{{ (request()->is('products*'))? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-address-book"></i>
-                    <span>使用者資料</span>
+                    <span>使用者管理</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="">業務列表</a></li>
-                    <li><a href="">新增業務</a></li>
+                    <li><a href="{{route('admin_users.index')}}">使用者列表</a></li>
+                    <li><a href="{{route('admin_users.create')}}">新增使用者</a></li>
                 </ul>
 
                 <a href="#">

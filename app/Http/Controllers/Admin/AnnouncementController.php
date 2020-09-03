@@ -16,15 +16,72 @@ class AnnouncementController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         //
 
         $query = Announcement::query();
-        $query->orderBy('create_date','DESC');
+        $sortBy_text = ['建立日期', '截止日期'];
+        $date_from = now()->subDays(7)->format('Y-m-d');
+        $date_to = now()->format('Y-m-d');
+        $search_type = 0;
+        $search_info = '';
+        $sortBy = 'create_date';
+        $type_filter = -1;
+
+        if ($request->has('sortBy')) {
+            $sortBy = $request->input('sortBy');
+        }
+
+        if ($request->has('type_filter')) {
+            $type_filter = $request->input('type_filter');
+        }
+        if ($type_filter >= 0) {
+            $query->where('type', '=', $type_filter);
+        }
+
+
+        if ($request->has('date_from')) {
+            $date_from = $request->input('date_from');
+        }
+        if ($request->has('date_to')) {
+            $date_to = $request->input('date_to');
+        }
+        if ($date_from != null && $date_to != null) {
+            $date_from_addtime = $date_from . " 00:00:00";
+            $date_to_addtime = $date_to . " 23:59:59";
+            $query->whereBetween( $sortBy, [$date_from_addtime, $date_to_addtime]);
+        }
+
+        if ($request->has('search_type')) {
+            $search_type = $request->query('search_type');
+        }
+        if ($search_type > 0) {
+            $search_info = $request->query('search_info');
+            switch ($search_type) {
+                case 1:
+                    $query->where('title', 'like', "%{$search_info}%");
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+
+
+
+        $query->orderBy($sortBy,'DESC');
         $announcements = $query->paginate(15);
         $data = [
-            'announcements' =>$announcements
+            'announcements' =>$announcements,
+            'date_to' => $date_to,
+            'date_from' => $date_from,
+            'search_type' => $search_type,
+            'search_info' => $search_info,
+            'sortBy' => $sortBy,
+            'type_filter' => $type_filter,
+            'sortBy_text' => $sortBy_text,
         ];
 
         return view('admin.announcement.index',$data);

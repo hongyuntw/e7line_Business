@@ -75,19 +75,14 @@
                             <div class=" inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                                    <textarea id="content" rows="10" style="size: auto" class="form-control" name="content" >{{old('content')}}</textarea>
+                                    <textarea id="content" rows="10" style="size: auto" class="form-control" name="content" >{{old('content',$announcement->content)}}</textarea>
                                 </div>
                             </div>
                         </div>
                         <script type="text/javascript">
                             var content = new nicEditor().panelInstance('content');
-                            nicEditors.findEditor( "content" ).setContent('{{$announcement->content}}');
-                            nicEditors.findEditor('content').saveContent();
-{{--                            nicEditors.findEditor( "content" ).nodeValue = '{{$announcement->content}}';--}}
-                            {{--$("div.nicEdit-main").html('{{$announcement->content}}');--}}
-                            {{--$('content').val($('.nicEdit-main').html());--}}
-
                         </script>
+
 
 
 
