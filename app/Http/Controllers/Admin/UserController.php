@@ -91,8 +91,6 @@ class UserController extends Controller
         ];
 
         return view('admin.user.index', $data);
-
-
     }
 
     /**

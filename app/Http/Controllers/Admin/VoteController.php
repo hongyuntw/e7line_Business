@@ -31,9 +31,17 @@ class VoteController extends Controller
         $search_type = 0;
         $search_info = '';
         $sortBy = 'create_date';
+        $is_active = -1;
 
         if ($request->has('sortBy')) {
             $sortBy = $request->input('sortBy');
+        }
+
+        if ($request->has('is_active')) {
+            $is_active = $request->input('is_active');
+        }
+        if ($is_active >= 0) {
+            $query->where('is_active', '=', $is_active);
         }
 
 
@@ -75,6 +83,7 @@ class VoteController extends Controller
             'search_info' => $search_info,
             'sortBy' => $sortBy,
             'sortBy_text' => $sortBy_text,
+            'is_active' => $is_active,
         ];
         return view('admin.vote.index', $data);
     }
@@ -120,6 +129,7 @@ class VoteController extends Controller
             'deadline' => $request->input('deadline'),
             'create_date' => now(),
             'update_date' => now(),
+            'is_active'=> now(),
         ]);
 
         $options = $request->input('options');
@@ -274,6 +284,7 @@ class VoteController extends Controller
         $vote->type = $request->input('type');
         $vote->option_type = $request->input('option_type');
         $vote->deadline = $request->input('deadline');
+        $vote->is_active = $request->input('is_active');
         $vote->update_date = now();
         $vote->update();
 

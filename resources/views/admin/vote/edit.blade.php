@@ -83,9 +83,20 @@
                             <div class=" inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                    <input type="datetime-local" class="form-control" name="deadline"  id="deadline"
+                                    <input type="datetime-local" class="form-control" name="deadline" id="deadline"
                                            value="{{ old('deadline',date('Y-m-d\TH:i', strtotime($vote->deadline))) }}">
 
+                                </div>
+                            </div>
+                            <label class=" control-label">狀態</label>
+                            <div class="inputGroupContainer">
+                                <div class="input-group">
+                                        <span class="input-group-addon"><i
+                                                    class="glyphicon glyphicon-envelope"></i></span>
+                                    <select name="is_active" class="form-control">
+                                        <option value="0" @if($vote->is_active ==0 ) selected @endif>停用</option>
+                                        <option value="1" @if($vote->is_active ==1 ) selected @endif>正常</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -174,9 +185,9 @@
                                 var ext = parts[parts.length - 1];
                                 ext = ext.toLowerCase();
                                 console.log(ext);
-                                if (ext == 'jpg' || ext == 'jpeg' || ext == 'png' || ext =='gif' || ext =='svg'){
+                                if (ext == 'jpg' || ext == 'jpeg' || ext == 'png' || ext == 'gif' || ext == 'svg') {
                                     console.log(input.files[0].size);
-                                    if (input.files[0].size > 300000 ){
+                                    if (input.files[0].size > 300000) {
                                         alert('檔案超過300000bytes!!');
                                         input.value = null;
                                         has_image_node.value = 0;
@@ -184,9 +195,8 @@
                                     }
 
                                     has_image_node.value = 1;
-                                    return ;
-                                }
-                                else{
+                                    return;
+                                } else {
                                     alert('上傳檔案必須是圖片檔唷！！！！！！');
                                     input.value = null;
                                     has_image_node.value = 0;
@@ -208,10 +218,10 @@
                                         return false;
                                     }
                                 }
-                                var deadline  = Date.parse(document.getElementById('deadline').value);
+                                var deadline = Date.parse(document.getElementById('deadline').value);
                                 var now = new Date();
                                 now = Date.parse(now);
-                                if (deadline <= now){
+                                if (deadline <= now) {
                                     alert('投票截止時間不能比現在早！');
                                     return false;
                                 }
@@ -242,7 +252,8 @@
                                     <span class="input-group-addon">
                                         <a onclick="add_option()" class="glyphicon glyphicon-plus-sign"></a>
                                         @if($option_count > 2)
-                                            <a onclick="delete_option({{$option_count}})" class="glyphicon glyphicon-minus-sign"></a>
+                                            <a onclick="delete_option({{$option_count}})"
+                                               class="glyphicon glyphicon-minus-sign"></a>
 
                                         @endif
                                     </span>

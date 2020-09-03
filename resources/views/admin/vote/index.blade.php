@@ -44,6 +44,18 @@
 
                                     </div>
                                     <div class="col-md-2">
+                                        <label>狀態</label>
+
+                                        <select name="is_active" class="form-control form-control-sm"
+                                                id="is_active">
+                                            <option value="-1" @if($is_active==-1) selected @endif>All
+                                            </option>
+                                            <option value="0" @if($is_active==0) selected @endif>關閉</option>
+                                            <option value="1" @if($is_active==1) selected @endif>開啟</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-md-2">
                                         <label>排序方式 及 訂單種類</label>
                                         <select name="sortBy" class="form-control form-control-sm">
                                             @foreach(['create_date','deadline'] as $col)
@@ -79,6 +91,8 @@
                                         <input hidden name="date_from" value="{{$date_from}}">
                                         <input hidden name="date_to" value="{{$date_to}}">
                                         <input hidden name="sortBy" value="{{$sortBy}}">
+                                        <input hidden name="is_active" value="{{$is_active}}">
+
 
 
                                     </form>
@@ -97,7 +111,9 @@
                             <table class="table table-bordered table-hover" width="100%">
                                 <thead style="background-color: lightgray">
                                 <tr>
-                                    <th class="text-center" style="width:10%">類別</th>
+                                    <th class="text-center" style="width:5%">類別</th>
+                                    <th class="text-center" style="width:5%">狀態</th>
+
                                     <th class="text-center" style="width:30%">投票名稱</th>
                                     <th class="text-center" style="width:20%">創立者</th>
                                     <th class="text-center" style="width:10%">刊登時間</th>
@@ -117,6 +133,15 @@
                                                 多選
                                             @else
                                                 其他
+                                            @endif
+                                        </td>
+
+                                        <td class="text-center">
+                                            @if($vote->is_active == 0 )
+                                                關閉
+
+                                            @else
+                                                正常
                                             @endif
                                         </td>
 
