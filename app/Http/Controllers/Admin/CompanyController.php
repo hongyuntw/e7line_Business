@@ -16,17 +16,53 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
 
 
         $query = Company::query();
+        $search_type = 0;
+        $search_info = '';
+        $is_active = -1;
+
+
+        if ($request->has('is_active')) {
+            $is_active = $request->input('is_active');
+        }
+        if ($is_active >= 0) {
+            $query->where('is_active', '=', $is_active);
+        }
+
+
+        if ($request->has('search_type')) {
+            $search_type = $request->query('search_type');
+        }
+        if ($search_type > 0) {
+            $search_info = $request->query('search_info');
+            switch ($search_type) {
+                case 1:
+                    $query->where('tax_id', 'like', "%{$search_info}%");
+
+                    break;
+                case 2:
+                    $query->where('name', 'like', "%{$search_info}%");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+
         $query->orderBy('create_date',"DESC");
         $companies = $query->paginate(15);
 
         $data = [
             'companies' => $companies,
+            'search_info' => $search_info,
+            'search_type' => $search_type,
+            'is_active' => $is_active,
         ];
 
         return view('admin.company.index',$data);
@@ -137,9 +173,16 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Company $company)
     {
         //
+
+        $data = [
+            'company' => $company,
+        ];
+        return view('admin.company.edit',$data);
+
+
     }
 
     /**
@@ -149,9 +192,34 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Company $company)
     {
         //
+        $this->validate($request, [
+            'tax_id' => 'required|string|max:8|min:8',
+            'name' => 'required',
+            'is_active' => 'required',
+        ]);
+
+
+        if($company->tax_id != $request->input('tax_id')){
+
+            $find_company = Company::where('tax_id','=',$request->input('tax_id'))->first();
+            if(!is_null($find_company)){
+                Session::flash('msg','統編已存在');
+                return redirect()->back();
+            }
+
+        }
+
+        $company->tax_id = $request->input('tax_id');
+        $company->name = $request->input('name');
+        $company->is_active = $request->input('is_active');
+        $company->create_date = now();
+        $company->update_date = now();
+        $company->update();
+
+        return redirect()->route('admin_company.index');
     }
 
     /**

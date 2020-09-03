@@ -49,7 +49,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('admin_company.index')}}">公司列表</a></li>
-                    <li><a href="{{route('admin_company.create')}}">新增公司</a></li>
+{{--                    <li><a href="{{route('admin_company.create')}}">新增公司</a></li>--}}
                 </ul>
                 <a href="#">
                     <i class="fa fa-address-book"></i>

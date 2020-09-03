@@ -8,11 +8,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                公司列表
+                <a href="{{route('admin_company.index')}}">公司列表</a>
                 <small></small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-shopping-bag"></i>公司</a></li>
+                <li><a href="{{route('admin_company.index')}}"><i class="fa fa-shopping-bag"></i>公司</a></li>
                 <li class="active">公司列表</li>
             </ol>
         </section>
@@ -45,6 +45,56 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <div class="row">
+                                <form name="filter_form" action="{{route('admin_company.index')}}" method="get">
+
+                                    <div class="col-md-2">
+                                        <label>是否激活</label>
+
+                                        <select name="is_active" class="form-control form-control-sm"
+                                                id="is_active">
+                                            <option value="-1" @if($is_active==-1) selected @endif>All
+                                            </option>
+                                            <option value="0" @if($is_active==0) selected @endif>否</option>
+                                            <option value="1" @if($is_active==1) selected @endif>是</option>
+                                        </select>
+                                        <button type="submit" class=" btn btn-sm bg-blue" style="width: 100%">篩選
+                                        </button>
+                                    </div>
+                                </form>
+                                <div class="col-md-3">
+                                    <label>搜尋</label><br>
+                                    <!-- search form (Optional) -->
+                                    <form roe="form" action="{{route('admin_company.index')}}" method="get">
+                                        <div class="form-inline">
+                                            <select name="search_type" class="form-group form-control"
+                                                    style="width: 100%;">
+                                                <option value="1" @if(request()->get('search_type')==1) selected @endif>
+                                                    統編
+                                                </option>
+                                                <option value="2" @if(request()->get('search_type')==2) selected @endif>
+                                                    公司名稱
+                                                </option>
+
+                                            </select>
+                                            <div class="inline">
+                                                <input type="text" name="search_info" class="form-control"
+                                                       style="width: 80%"
+                                                       placeholder="Search..."
+                                                       value="@if(request()->get('search_info')) {{request()->get('search_info')}} @endif">
+                                                <button type="submit" id="search-btn" style="cursor: pointer"
+                                                        style="width: 20%"
+                                                        class="btn btn-flat"><i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <input hidden name="is_active" value="{{$is_active}}">
+
+
+                                    </form>
+                                    <!-- /.search form -->
+
+
+                                </div>
                                 <div class="col-md-3">
                                     <label>匯入</label><br>
                                     <div class="inline">
