@@ -84,6 +84,20 @@
                             </div>
                         @endif
 
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">狀態</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                        <span class="input-group-addon"><i
+                                                    class="glyphicon glyphicon-envelope"></i></span>
+                                    <select name="is_active" class="form-control">
+                                        <option value="0" >停用</option>
+                                        <option value="1" selected>正常</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">信箱(帳號)</label>

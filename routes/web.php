@@ -21,6 +21,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] , 'namespace' => 'Ad
     Route::post('users/store', 'UserController@store')->name('admin_users.store');
     Route::get('users/{user}/edit', 'UserController@edit')->name('admin_users.edit');
     Route::post('users/{user}/update', 'UserController@update')->name('admin_users.update');
+    Route::post('users/import', 'UserController@import')->name('admin_users.import');
+
+
+//    company
+    Route::get('companies','CompanyController@index')->name('admin_company.index');
+    Route::get('companies/create', 'CompanyController@create')->name('admin_company.create');
+    Route::post('companies/store', 'CompanyController@store')->name('admin_company.store');
+    Route::get('companies/{company}/edit', 'CompanyController@edit')->name('admin_company.edit');
+    Route::post('companies/{company}/update', 'CompanyController@update')->name('admin_company.update');
+    Route::post('companies/import', 'CompanyController@import')->name('admin_company.import');
 
 
 

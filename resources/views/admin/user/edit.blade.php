@@ -77,12 +77,28 @@
                                                     class="glyphicon glyphicon-envelope"></i></span>
                                         <select name="level" class="form-control">
                                             <option value="0" @if($user->level ==0 ) selected @endif>一般管理員</option>
-                                            <option value="1" @if($user->level ==0 ) selected @endif>超級管理員</option>
+                                            <option value="1" @if($user->level ==1 ) selected @endif>超級管理員</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         @endif
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">狀態</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                        <span class="input-group-addon"><i
+                                                    class="glyphicon glyphicon-envelope"></i></span>
+                                    <select name="is_active" class="form-control">
+                                        <option value="0" @if($user->is_active ==0 ) selected @endif>停用</option>
+                                        <option value="1" @if($user->is_active ==1 ) selected @endif>正常</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
 
 
                         <div class="form-group">

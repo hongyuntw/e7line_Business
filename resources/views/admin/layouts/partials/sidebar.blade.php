@@ -42,6 +42,17 @@
             <li class="treeview{{ (request()->is('products*'))? ' active' : '' }}">
                 <a href="#">
                     <i class="fa fa-address-book"></i>
+                    <span>公司</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('admin_company.index')}}">公司列表</a></li>
+                    <li><a href="{{route('admin_company.create')}}">新增公司</a></li>
+                </ul>
+                <a href="#">
+                    <i class="fa fa-address-book"></i>
                     <span>管理員</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
