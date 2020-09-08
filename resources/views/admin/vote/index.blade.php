@@ -94,7 +94,6 @@
                                         <input hidden name="is_active" value="{{$is_active}}">
 
 
-
                                     </form>
                                     <!-- /.search form -->
 
@@ -150,11 +149,15 @@
                                         <td>{{date('Y-m-d H:m',strtotime($vote->create_date))}}</td>
                                         <td>{{date('Y-m-d H:m',strtotime($vote->deadline))}}</td>
                                         <td class="text-center" style="vertical-align: middle;">
-                                            <form method="get"
-                                                  action="{{route('admin_vote.edit',$vote->id)}}">
-                                                <button type="submit" class="btn btn-xs btn-primary">編輯</button>
-                                                <input type="hidden" value="" id="source_html" name="source_html">
-                                            </form>
+
+                                            @if(Auth::user()->level == 2 or Auth::user()->level == 1 or (Auth::user()->level==0 and Auth::user()->id ==$vote->user_id ))
+
+                                                <form method="get"
+                                                      action="{{route('admin_vote.edit',$vote->id)}}">
+                                                    <button type="submit" class="btn btn-xs btn-primary">編輯</button>
+                                                    <input type="hidden" value="" id="source_html" name="source_html">
+                                                </form>
+                                            @endif
                                             <form method="get"
                                                   action="{{route('admin_vote.vote',$vote->id)}}">
                                                 <button type="submit" class="btn btn-xs btn-primary">投票</button>

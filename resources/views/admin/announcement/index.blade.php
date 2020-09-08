@@ -37,7 +37,7 @@
                                             <option value="-1" @if(-1==$type_filter) selected
                                                     @endif>All
                                             </option>
-                                            <option value="0"  @if(0==$type_filter) selected @endif>通知</option>
+                                            <option value="0" @if(0==$type_filter) selected @endif>通知</option>
                                             <option value="1" @if(1==$type_filter) selected @endif>活動</option>
 
                                         </select>
@@ -94,14 +94,12 @@
                                         <input hidden name="type_filter" value="{{$type_filter}}">
 
 
-
                                     </form>
                                     <!-- /.search form -->
 
                                 </div>
 
                             </div>
-
 
 
                         </div>
@@ -139,11 +137,13 @@
                                         <td class="text-center">{{$announcement->title}}</td>
                                         <td>{{date('Y-m-d H:m',strtotime($announcement->create_date))}}</td>
                                         <td class="text-center" style="vertical-align: middle;">
-                                            <form method="get"
-                                                  action="{{route('admin_announcement.edit',$announcement->id)}}">
-                                                <button type="submit" class="btn btn-xs btn-primary">編輯</button>
-                                                <input type="hidden" value="" id="source_html" name="source_html">
-                                            </form>
+                                            @if(Auth::user()->level == 2 or Auth::user()->level == 1 or (Auth::user()->level==0 and Auth::user()->id ==$announcement->user_id ))
+                                                <form method="get"
+                                                      action="{{route('admin_announcement.edit',$announcement->id)}}">
+                                                    <button type="submit" class="btn btn-xs btn-primary">編輯</button>
+                                                    <input type="hidden" value="" id="source_html" name="source_html">
+                                                </form>
+                                            @endif
                                         </td>
 
 

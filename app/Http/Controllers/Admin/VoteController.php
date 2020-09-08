@@ -33,6 +33,10 @@ class VoteController extends Controller
         $sortBy = 'create_date';
         $is_active = -1;
 
+        if(Auth::user()->level != 2){
+            $query->where('company_id','=',Auth::user()->company->id);
+        }
+
         if ($request->has('sortBy')) {
             $sortBy = $request->input('sortBy');
         }

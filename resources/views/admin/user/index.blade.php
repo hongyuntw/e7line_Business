@@ -106,7 +106,6 @@
                                         <input hidden name="type_filter" value="{{$type_filter}}">
 
 
-
                                     </form>
                                     <!-- /.search form -->
 
@@ -180,8 +179,13 @@
                                                 @endif
                                             </td>
 
-                                            <td><a class="btn btn-primary btn-sm"
-                                                   href="{{route('admin_users.edit',$user->id)}}">編輯 </a></td>
+                                            @if((Auth::user()->level == 1 and ($user->level ==0 || $user->id == Auth::user()->id))or Auth::user()->level == 2)
+                                                <td><a class="btn btn-primary btn-sm"
+                                                       href="{{route('admin_users.edit',$user->id)}}">編輯 </a></td>
+                                            @elseif(Auth::user()->level == 0 and $user->id == Auth::user()->id)
+                                                <td><a class="btn btn-primary btn-sm"
+                                                       href="{{route('admin_users.edit',$user->id)}}">編輯 </a></td>
+                                            @endif
 
 
                                         </tr>

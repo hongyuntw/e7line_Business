@@ -66,6 +66,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] , 'namespace' => 'Ad
     Route::get('/votes','VoteController@index')->name('admin_vote.index');
 
 
+//    permission
+    Route::get('/permissions','CompanyPermissionController@index')->name('admin_permission.index');
+    Route::get('/permissions/{permission}/edit','CompanyPermissionController@edit')->name('admin_permission.edit');
+    Route::post('/permissions/{permission}/update','CompanyPermissionController@update')->name('admin_permission.update');
+
+
+
 });
 
 
@@ -80,8 +87,25 @@ Route::get('/', function () {
         return redirect('/admin/');
     }
     else {
-        return view('auth.login');
+        return view('home');
     }
+});
+
+
+
+
+
+
+
+Route::group([], function(){
+    Route::get('/front_end/login','LoginController@index')->name('front_end_login.index');
+    Route::post('/front_end/login','LoginController@login')->name('front_end.login');
+    Route::get('/front_end/logout','LoginController@logout')->name('front_end.logout');
+
+
+    Route::get('/announcement','AnnouncementController@index')->name('announcement');
+
+
 });
 
 

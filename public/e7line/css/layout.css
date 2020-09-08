@@ -1,0 +1,32 @@
+.row {
+	display: flex;
+}
+
+.row[align-x="space-between"] {
+	justify-content: space-between;
+}
+
+.row[align-x="center"] {
+	justify-content: center;
+}
+
+.row[align-y="center"] {
+	align-items: center;
+}
+
+.row[align-y="bottom"] {
+	align-items: flex-end;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+}
+
+.column[align-x="center"] {
+	align-items: center;
+}
+
+.grid {
+	display: grid;
+}

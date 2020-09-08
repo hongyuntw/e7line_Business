@@ -31,6 +31,11 @@ class AnnouncementController extends Controller
 
         $query->where('type','<=',2);
 
+
+        if(Auth::user()->level != 2){
+            $query->where('company_id','=',Auth::user()->company->id);
+        }
+
         if ($request->has('sortBy')) {
             $sortBy = $request->input('sortBy');
         }

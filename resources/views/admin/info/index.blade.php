@@ -31,18 +31,18 @@
                         <div class="box-header with-border">
                             <div class="row">
                                 <form name="filter_form" action="{{route('admin_info.index')}}" method="get">
-{{--                                    <div class="col-md-2">--}}
-{{--                                        <label>公告類型</label>--}}
-{{--                                        <select name="type_filter" class="form-control form-control-sm">--}}
-{{--                                            <option value="-1" @if(-1==$type_filter) selected--}}
-{{--                                                    @endif>All--}}
-{{--                                            </option>--}}
-{{--                                            <option value="0" @if(0==$type_filter) selected @endif>通知</option>--}}
-{{--                                            <option value="1" @if(1==$type_filter) selected @endif>活動</option>--}}
+                                    {{--                                    <div class="col-md-2">--}}
+                                    {{--                                        <label>公告類型</label>--}}
+                                    {{--                                        <select name="type_filter" class="form-control form-control-sm">--}}
+                                    {{--                                            <option value="-1" @if(-1==$type_filter) selected--}}
+                                    {{--                                                    @endif>All--}}
+                                    {{--                                            </option>--}}
+                                    {{--                                            <option value="0" @if(0==$type_filter) selected @endif>通知</option>--}}
+                                    {{--                                            <option value="1" @if(1==$type_filter) selected @endif>活動</option>--}}
 
-{{--                                        </select>--}}
+                                    {{--                                        </select>--}}
 
-{{--                                    </div>--}}
+                                    {{--                                    </div>--}}
 
                                     <div class="col-md-4">
                                         <label>From</label>
@@ -111,7 +111,7 @@
                                 <thead style="background-color: lightgray">
                                 <tr>
                                     <th class="text-center" style="width:20%">公司名稱</th>
-{{--                                    <th class="text-center" style="width:10%">類別</th>--}}
+                                    {{--                                    <th class="text-center" style="width:10%">類別</th>--}}
                                     <th class="text-center" style="width:40%">標題</th>
                                     <th class="text-center" style="width:10%">刊登時間</th>
                                     <th class="text-center" style="width:20%">其他</th>
@@ -124,24 +124,19 @@
 
                                     <tr class="text-center">
                                         <td>{{$announcement->company->name}}</td>
-{{--                                        <td class="text-center">--}}
-{{--                                            @if($announcement->type == 0 )--}}
-{{--                                                通知--}}
-{{--                                            @elseif($announcement->type == 1)--}}
-{{--                                                活動--}}
-{{--                                            @else--}}
-{{--                                                其他--}}
-{{--                                            @endif--}}
-{{--                                        </td>--}}
+
 
                                         <td class="text-center">{{$announcement->title}}</td>
                                         <td>{{date('Y-m-d H:m',strtotime($announcement->create_date))}}</td>
                                         <td class="text-center" style="vertical-align: middle;">
-                                            <form method="get"
-                                                  action="{{route('admin_info.edit',$announcement->id)}}">
-                                                <button type="submit" class="btn btn-xs btn-primary">編輯</button>
-                                                <input type="hidden" value="" id="source_html" name="source_html">
-                                            </form>
+                                            @if(Auth::user()->level == 2 or Auth::user()->level == 1 or (Auth::user()->level==0 and Auth::user()->id ==$announcement->user_id ))
+
+                                                <form method="get"
+                                                      action="{{route('admin_info.edit',$announcement->id)}}">
+                                                    <button type="submit" class="btn btn-xs btn-primary">編輯</button>
+                                                    <input type="hidden" value="" id="source_html" name="source_html">
+                                                </form>
+                                            @endif
                                         </td>
 
 

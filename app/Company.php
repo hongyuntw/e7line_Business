@@ -28,5 +28,10 @@ class Company extends Model
         return $this->hasMany(Vote::class);
     }
 
+    public function company_permissions()
+    {
+        return $this->hasMany(CompanyPermission::class);
+    }
+
 
 }

@@ -40,28 +40,53 @@
 
 
             <li class="treeview{{ (request()->is('products*'))? ' active' : '' }}">
-                <a href="#">
-                    <i class="fa fa-address-book"></i>
-                    <span>公司</span>
-                    <span class="pull-right-container">
+
+
+                @if(Auth::user()->level == 2)
+                    <a href="#">
+                        <i class="fa fa-address-book"></i>
+                        <span>權限</span>
+                        <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('admin_company.index')}}">公司列表</a></li>
-{{--                    <li><a href="{{route('admin_company.create')}}">新增公司</a></li>--}}
-                </ul>
-                <a href="#">
-                    <i class="fa fa-address-book"></i>
-                    <span>管理員</span>
-                    <span class="pull-right-container">
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('admin_permission.index')}}">權限列表</a></li>
+                    </ul>
+
+                    <a href="#">
+                        <i class="fa fa-address-book"></i>
+                        <span>公司</span>
+                        <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('admin_users.index')}}">管理員列表</a></li>
-                    <li><a href="{{route('admin_users.create')}}">新增管理員</a></li>
-                </ul>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('admin_company.index')}}">公司列表</a></li>
+                    </ul>
+
+                @endif
+
+                @php($user_module = \App\Module::where('name','=','管理員查看')->first())
+                @php($permission = \App\CompanyPermission::where('module_id','=',$user_module->id)
+                        ->where('company_id','=',Auth::user()->company_id)->first()->permission)
+
+                @if($permission < 2 or Auth::user()->level == 2)
+                    <a href="#">
+                        <i class="fa fa-address-book"></i>
+                        <span>管理員</span>
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('admin_users.index')}}">管理員列表</a></li>
+                        @if(Auth::user()->level >= 1)
+                            <li><a href="{{route('admin_users.create')}}">新增管理員</a></li>
+                        @endif
+                    </ul>
+
+                @endif
 
                 <a href="#">
                     <i class="fa fa-address-book"></i>
@@ -97,12 +122,6 @@
                     <li><a href="{{route('admin_vote.index')}}">投票列表</a></li>
                     <li><a href="{{route('admin_vote.create')}}">新增投票</a></li>
                 </ul>
-
-
-
-
-
-
 
 
             </li>

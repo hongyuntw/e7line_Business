@@ -20,15 +20,19 @@ class InfoController extends Controller
         //
 
         $query = Announcement::query();
-        $sortBy_text = ['建立日期', '截止日期'];
+
         $date_from = now()->subDays(7)->format('Y-m-d');
         $date_to = now()->format('Y-m-d');
         $search_type = 0;
         $search_info = '';
         $sortBy = 'create_date';
+        $sortBy_text = ['建立日期', '截止日期'];
         $type_filter = -1;
 
         $query->where('type','>',2);
+        if(Auth::user()->level != 2){
+            $query->where('company_id','=',Auth::user()->company->id);
+        }
 
         if ($request->has('sortBy')) {
             $sortBy = $request->input('sortBy');
