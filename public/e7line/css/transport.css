@@ -1,0 +1,117 @@
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 106px;
+  width: 100%;
+  padding-left: 15px;
+  background-color: #F7F8F9;
+}
+
+header > a {
+  margin-bottom: 12px;
+  font-size: 19px;
+  color: #6e6e6e;
+  text-decoration: none;
+}
+
+header > .logo {
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+header > button {
+  position: relative;
+  left: -5px;
+  padding-bottom: 11px;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #d99694;
+}
+
+header > button > img {
+  width: 24px;
+  margin-bottom: 2px;
+}
+
+header > .menu {
+  margin-left: auto;
+  padding-bottom: 19px;
+  cursor: pointer;
+}
+
+.container {
+  margin-top: 106px;
+}
+
+h1 {
+  padding: 12px 26px 4px 32px;
+  border-top: 1px solid white;
+
+  font-weight: 600;
+  font-size: 26px;
+  color: #4d4d4d;
+}
+
+p {
+  padding: 10px 26px 9px;
+  background-color: #FFEBEB;
+}
+
+p span:nth-child(1) {
+  font-size: 13px;
+  color: #6f6f6f;
+}
+
+p span:nth-child(2) {
+  font-size: 12px;
+  color: #ff0f1b;
+}
+
+.grid {
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin: 23px 27px 0;
+}
+
+.grid li img {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 12px;
+}
+
+label.column input {
+  display: none;
+}
+
+label.column input + label {
+  display: block;
+  width: 21px;
+  height: 21px;
+  border: 1px solid #707070;
+}
+
+label.column input + label + label {
+  margin-left: 16px;
+  font-size: 19px;
+  color: #535353;
+}
+
+label.column input:checked + label {
+  background-color: #535353;
+}
+
+.container button {
+  border-radius: 25px;
+  margin: 27px 37px 0;
+  border: none;
+  background-color: #F5908D;
+  color: white;
+  padding: 12px;
+  width: calc(100% - 37px * 2);
+  font-size: 19px;
+}

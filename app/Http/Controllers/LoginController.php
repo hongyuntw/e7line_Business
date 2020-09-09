@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use Illuminate\Http\Request;
 use Session;
 
@@ -73,10 +74,18 @@ class LoginController extends Controller
 
         $result_data = json_decode($result->getBody()->getContents());
         $result_data = (array) $result_data;
+        $member = $result_data['member'];
+        $member = (array) $member;
+
+
 
 
         if($result_data['status']){
-            Session::put('member',$result_data['member']);
+
+            $tax_id = $member['BusinessCode'];
+            $company = Company::where('tax_id','=',$tax_id)->first();
+            $member['company'] = $company;
+            Session::put('member',$member);
             return redirect('/');
 
         }

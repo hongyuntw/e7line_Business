@@ -6,11 +6,12 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    @if(session('alert')=='failed')
-                        <div class="alert alert-danger text-center">{{session('msg')}}</div>
+                    @if(session('message'))
+                        <div class="alert alert-danger text-center">{{session('message')}}</div>
                     @endif
 
                     @csrf
+
                     <div class="panel-heading">Login</div>
 
                     <div class="panel-body">

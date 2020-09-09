@@ -1,0 +1,147 @@
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 106px;
+  width: 100%;
+  background-color: #F7F8F9;
+}
+
+header > a {
+  position: absolute;
+  left: 15px;
+  bottom: 12px;
+  font-size: 19px;
+  color: #6e6e6e;
+  text-decoration: none;
+}
+
+header > h1 {
+  padding-bottom: 12px;
+  font-weight: 600;
+  font-size: 22px;
+  color: #535353;
+}
+
+header > .menu {
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  bottom: 19px;
+}
+
+.container {
+  margin-top: 106px;
+}
+
+.search {
+  height: 42px;
+  padding: 11px 18px;
+  margin: 0 12px;
+  border-radius: 100%;
+  background: white;
+  border-radius: 21px;
+}
+
+.search input {
+  flex: 1 0 auto;
+  margin-left: 12px;
+  border: none;
+  font-weight: normal;
+  font-size: 17px;
+  color: #c9c9c9;
+  outline: none;
+}
+
+.search input::-webkit-input-placeholder {
+  color: #c9c9c9;
+}
+
+.search + h2 {
+  margin-top: 12px;
+}
+
+h2 {
+  font-size: 13px;
+  color: #6f6f6f;
+  padding: 10px 27px 8px;
+  position: relative; /* prevent shadow */
+}
+
+ul {
+  background-color: white;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.16);
+}
+
+ul li + li {
+  border-top: 1px solid #D3D3D3;
+}
+
+ul li a {
+  text-decoration: none;
+}
+
+ul li a .row + .row {
+  margin-top: 12px;
+}
+
+ul li a .row:nth-child(1) span:nth-child(1) {
+  font-size: 13px;
+}
+
+ul li a .row:nth-child(1) span:nth-child(2) {
+  font-size: 13px;
+  color: #b4b4b4;
+}
+
+ul li a .row:nth-child(2) h3 {
+  font-weight: 600;
+  color: #3e3c3c;
+}
+
+ul + h2 {
+  margin-top: 12px;
+}
+
+/* Open */
+h2.open {
+  background: #ffebeb;
+}
+
+ul.open li a {
+  padding: 17px 27px 16px;
+}
+
+ul.open li a .row:nth-child(1) span:nth-child(1) {
+  color: #f48282;
+}
+
+
+/* Close */
+h2.close {
+  background: #EBFBFF;
+}
+
+ul.close li a {
+  padding: 20px 27px 16px;
+}
+
+ul.close li a .row:nth-child(1) span:nth-child(1) {
+  color: #82A9F4;
+  margin-right: 6px;
+}
+
+ul.close li a .row:nth-child(1) span:nth-child(3) {
+  margin-left: auto;
+  color: white;
+  border-radius: 10px;
+  font-size: 11px;
+  background-color: #82A9F4;
+  padding: 2px 9px 1px;
+}
+
+ul.close li a .row:nth-child(1) span:nth-child(4) {
+  margin-left: 6px;
+  color: #B4B4B4;
+  font-size: 13px;
+}
