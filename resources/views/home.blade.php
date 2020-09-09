@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>首頁</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -62,7 +62,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="/search">
                 <span>各式查詢</span>
             </a>
         </li>
@@ -83,10 +83,10 @@
     <div class="mask"></div>
     <div class="menu">
         <ul>
-            <li><a href="www.e7line.com">好康商品</a></li>
+            <li><a href="https://www.e7line.com/">好康商品</a></li>
             <li><a href="/announcement">福委公告</a></li>
-            <li><a href="vote.html">活動投票</a></li>
-            <li><a href="">各式查詢</a></li>
+            <li><a href="">活動投票</a></li>
+            <li><a href="/search">各式查詢</a></li>
         </ul>
         @if (session('member'))
             <button><a style="text-decoration: none" href="{{route('front_end.logout')}}">登出</a></button>

@@ -40,6 +40,36 @@ class AnnouncementController extends Controller
         return view('announcement',$data);
     }
 
+
+    public function index_search(Request $request)
+    {
+        $query = Announcement::query();
+        $search_info = '';
+
+        $query->where('type','>',2);
+        $query->orderBy('create_date','DESC');
+
+        if($request->has('search_info')){
+            $search_info = $request->input('search_info');
+        }
+        if($search_info != ''){
+            $query->where('title', 'like', "%{$search_info}%");
+        }
+        $announcements = $query->get();
+
+
+        $data = [
+            'announcements' => $announcements,
+            'search_info' => $search_info,
+        ];
+
+
+        return view('search',$data);
+    }
+    
+    
+    
+
     /**
      * Show the form for creating a new resource.
      *

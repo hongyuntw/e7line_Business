@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>福委公告</title>
+    <title>各式查詢</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,7 +28,7 @@
     <div class="search row" align-y="center">
         <form  action="/announcement" method="get">
             <button style="background-color: Transparent;border: none;cursor:pointer;overflow: hidden;outline:none;" type="submit"><img src="e7line/img/search.svg" style="border: 0" alt=""></button>
-            <input name="search_info" type="text" placeholder="請搜尋公告內容" value="{{$search_info}}">
+            <input name="search_info" type="text" placeholder="請輸入查詢內容" value="{{$search_info}}">
         </form>
     </div>
     <ul class="grid">
@@ -41,11 +41,7 @@
                         <div class="column">
                             <div class="row" align-x="space-between">
                             <span class="pink">
-                                @if($ann->type == 2)
-                                    【公告】
-                                @elseif($ann->type == 1)
-                                    【活動】
-                                @endif
+                                【規範】
                             </span>
                                 <span class="date">{{date('Y/m/d',strtotime($ann->create_date))}}</span>
                             </div>
@@ -68,7 +64,7 @@
         <img src="e7line/img/left.svg" alt="">
         返回
     </a>
-    <h1>福委會公告</h1>
+    <h1>各式查詢</h1>
     <img class="menu" src="e7line/img/menu.svg" alt="">
 </header>
 <nav class="close">
