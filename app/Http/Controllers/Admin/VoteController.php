@@ -133,7 +133,7 @@ class VoteController extends Controller
             'deadline' => $request->input('deadline'),
             'create_date' => now(),
             'update_date' => now(),
-            'is_active'=> now(),
+            'is_active'=> 1,
         ]);
 
         $options = $request->input('options');

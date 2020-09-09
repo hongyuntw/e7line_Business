@@ -200,12 +200,18 @@
                                     }
                                 }
                                 var deadline  = Date.parse(document.getElementById('deadline').value);
+                                console.log(deadline);
                                 var now = new Date();
                                 now = Date.parse(now);
-                                if (deadline <= now){
-                                    alert('投票截止時間不能比現在早！')
+                                if (deadline <= now ){
+                                    alert('投票截止時間不能比現在早！');
                                     return false;
                                 }
+                                if(deadline == null || isNaN(deadline)){
+                                    alert('投票截止時間為必填');
+                                    return false;
+                                }
+                                // return false;
 
 
                                 return true;

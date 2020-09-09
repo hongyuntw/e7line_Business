@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="../../e7line/css/reset.css">
     <link rel="stylesheet" href="../../e7line/css/layout.css">
-    <link rel="stylesheet" href="../../e7line/css/transport.css">
+    <link rel="stylesheet" href="../../e7line/css/quest.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
     <meta name="theme-color" content="#fafafa">
@@ -33,37 +33,33 @@
     </p>
     <form action="{{route('vote_submit',$vote->id)}}" method="post">
         @csrf
-        <ul class="grid">
+        <div class="column">
+
             @foreach($vote->vote_options as $option)
-                <li>
-                    <label for="{{$option->id}}" class="column">
-                        <img src="{{$option->image_url}}" alt="" width="450" height="519">
-                        <div class="row" align-x="center" align-y="center">
-                            <input type="checkbox" id="{{$option->id}}" name="choice[{{$option->id}}]"
-                                   @if(in_array($option->id,$old_option_ids)) checked @endif>
-                            <label for="{{$option->id}}"></label>
-                            <label for="{{$option->id}}">{{$option->name}}</label>
-                        </div>
-                    </label>
-                </li>
+                <label for="{{$option->id}}" class="center">
+                    <input type="checkbox" id="{{$option->id}}" name="choice[{{$option->id}}]"
+                    @if(in_array($option->id,$old_option_ids)) checked @endif>
+                    <label for="{{$option->id}}"></label>
+                    <label for="{{$option->id}}">{{$option->name}}</label>
+                </label>
             @endforeach
 
-        </ul>
-        <button class="center">確認送出</button>
 
+        </div>
+        <button type="submit" class="center">確認送出</button>
     </form>
+
 </div>
 
 
-<header class="row" align-x="center" align-y="bottom">
-    <a href="/" class="row" align-y="center">
+<header class="row" align-y="bottom">
+    <a href="/vote" class="row" align-y="center">
         <img src="../../e7line/img/left.svg" alt="">
         返回
     </a>
-    <h1>投票</h1>
-    <img class="menu" src="../../e7line/img/menu.svg" alt="">
-</header>
+    <img class="logo" src="../../e7line/img/logo.png" alt="">
 
+</header>
 </body>
 
 
@@ -100,5 +96,6 @@
     }
 
 </script>
+
 
 </html>

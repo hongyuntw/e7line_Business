@@ -16,7 +16,7 @@ class CreateVoteDetailsTable extends Migration
         Schema::create('vote_details', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('vote_id');
-            $table->unsignedInteger('user_id');
+            $table->string('email');
             $table->unsignedInteger('vote_option_id');
             $table->timestamp('create_date')->nullable();
             $table->timestamp('update_date')->nullable();

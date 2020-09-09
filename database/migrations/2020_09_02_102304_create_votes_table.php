@@ -23,6 +23,7 @@ class CreateVotesTable extends Migration
             $table->tinyInteger('type')->default(0);
 //            選項是否是文字(1)/圖片(0)
             $table->tinyInteger('option_type')->default(0);
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamp('create_date')->nullable();
             $table->timestamp('deadline')->nullable();
             $table->timestamp('update_date')->nullable();

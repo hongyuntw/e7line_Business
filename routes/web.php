@@ -95,6 +95,9 @@ Route::group([], function () {
 //    vote
     Route::get('/vote', 'VoteController@index')->name('vote');
     Route::get('/voteDetailImg','VoteController@detail')->name('vote_detail');
+    Route::get('/vote/{vote}/voting','VoteController@voting')->name('voting');
+    Route::post('/vote/{vote}','VoteController@submit')->name('vote_submit');
+
 
 
 });

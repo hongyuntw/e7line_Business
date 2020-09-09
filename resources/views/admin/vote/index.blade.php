@@ -158,11 +158,11 @@
                                                     <input type="hidden" value="" id="source_html" name="source_html">
                                                 </form>
                                             @endif
-                                            <form method="get"
-                                                  action="{{route('admin_vote.vote',$vote->id)}}">
-                                                <button type="submit" class="btn btn-xs btn-primary">投票</button>
-                                                <input type="hidden" value="" id="source_html" name="source_html">
-                                            </form>
+{{--                                            <form method="get"--}}
+{{--                                                  action="{{route('admin_vote.vote',$vote->id)}}">--}}
+{{--                                                <button type="submit" class="btn btn-xs btn-primary">投票</button>--}}
+{{--                                                <input type="hidden" value="" id="source_html" name="source_html">--}}
+{{--                                            </form>--}}
                                             <form method="get"
                                                   action="{{route('admin_vote.result',$vote->id)}}">
                                                 <button type="submit" class="btn btn-xs btn-primary">結果</button>

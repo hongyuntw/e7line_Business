@@ -62,7 +62,7 @@
             </a>
         </li>
         <li>
-            <a href="/voteDetailImg">
+            <a href="/vote">
                 <span>活動投票</span>
             </a>
         </li>
@@ -76,10 +76,6 @@
 
 <header class="row" align-y="bottom">
     <img class="logo" src="e7line/img/logo.png" alt="">
-    {{--    <button class="column" align-x="center">--}}
-    {{--        <img src="e7line/img/plus.svg" alt="">--}}
-    {{--        <span>福委平台</span>--}}
-    {{--    </button>--}}
     <img class="menu" src="e7line/img/menu.svg" alt="">
 </header>
 
