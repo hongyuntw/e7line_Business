@@ -85,6 +85,7 @@ class LoginController extends Controller
             $tax_id = $member['BusinessCode'];
             $company = Company::where('tax_id','=',$tax_id)->first();
             $member['company'] = $company;
+            $member['password'] = $encrypted_pwd;
             Session::put('member',$member);
             return redirect('/');
 
@@ -96,6 +97,20 @@ class LoginController extends Controller
 
 
 
+    }
+
+    public function home()
+    {
+        $data  = [
+            'email' => '',
+            'pwd' => '',
+
+        ];
+        if(Session::get('member')){
+            $data['email'] = Session::get('member')['Email'];
+            $data['pwd'] = Session::get('member')['password'];
+        }
+        return view('home',$data);
     }
 
 

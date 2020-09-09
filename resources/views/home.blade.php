@@ -37,6 +37,7 @@
             </span>
 
 
+
             {{--            <a href="{{route('front_end.logout')}}">登出</a>--}}
         @else
             <span>尚未登入</span>
@@ -45,19 +46,23 @@
         {{--        <span>台灣雅瑪多</span>--}}
         {{--        <span>42388877</span>--}}
     </p>
+    <form id="e7lineLoginForm" action="https://www.e7line.com/API/outsideLogin.aspx" method="post">
+        <input type="hidden" value="{{$email}}" name="Email">
+        <input type="hidden" value="{{$pwd}}" name="Password">
+    </form>
     <ul class="grid">
         <li class="white">
-            <a href="https://www.e7line.com/">
+            <a onclick="document.getElementById('e7lineLoginForm').submit();">
                 <span>好康商品</span>
             </a>
         </li>
         <li>
-            <a href="{{route('announcement')}}">
+            <a href="/announcement">
                 <span>福委公告</span>
             </a>
         </li>
         <li>
-            <a href="/vote">
+            <a href="/voteDetailImg">
                 <span>活動投票</span>
             </a>
         </li>

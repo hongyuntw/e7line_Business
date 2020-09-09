@@ -17,6 +17,12 @@ class VoteController extends Controller
         return;
     }
 
+
+    public function detail()
+    {
+        return view('voteDetailImg');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

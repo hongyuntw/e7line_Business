@@ -75,12 +75,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('home');
-});
+//Route::get('/', function () {
+//    return view('home');
+//});
 
 
 Route::group([], function () {
+    Route::get('/', 'LoginController@home')->name('home');
+
     Route::get('/front_end/login', 'LoginController@index')->name('front_end_login.index');
     Route::post('/front_end/login', 'LoginController@login')->name('front_end.login');
     Route::get('/front_end/logout', 'LoginController@logout')->name('front_end.logout');
@@ -89,7 +91,10 @@ Route::group([], function () {
     Route::get('/announcement', 'AnnouncementController@index')->name('announcement');
     Route::get('/search', 'AnnouncementController@index_search')->name('search');
 
+
+//    vote
     Route::get('/vote', 'VoteController@index')->name('vote');
+    Route::get('/voteDetailImg','VoteController@detail')->name('vote_detail');
 
 
 });
