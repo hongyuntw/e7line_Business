@@ -57,7 +57,7 @@
             </a>
         </li>
         <li>
-            <a href="vote.html">
+            <a href="/vote">
                 <span>活動投票</span>
             </a>
         </li>
@@ -85,7 +85,7 @@
         <ul>
             <li><a href="https://www.e7line.com/">好康商品</a></li>
             <li><a href="/announcement">福委公告</a></li>
-            <li><a href="">活動投票</a></li>
+            <li><a href="/vote">活動投票</a></li>
             <li><a href="/search">各式查詢</a></li>
         </ul>
         @if (session('member'))

@@ -89,6 +89,7 @@ Route::group([], function () {
     Route::get('/announcement', 'AnnouncementController@index')->name('announcement');
     Route::get('/search', 'AnnouncementController@index_search')->name('search');
 
+    Route::get('/vote', 'VoteController@index')->name('vote');
 
 
 });
