@@ -26,7 +26,7 @@
 <body>
 <div class="container">
     <div class="search row" align-y="center">
-        <form  action="/announcement" method="get">
+        <form  action="/search" method="get">
             <button style="background-color: Transparent;border: none;cursor:pointer;overflow: hidden;outline:none;" type="submit"><img src="e7line/img/search.svg" style="border: 0" alt=""></button>
             <input name="search_info" type="text" placeholder="請輸入查詢內容" value="{{$search_info}}">
         </form>
