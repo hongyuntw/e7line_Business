@@ -20,6 +20,7 @@ class VoteController extends Controller
     {
         //
         if (!Session::get('member')) {
+            Session::flash('message','投票功能必須登入！');
             return redirect()->back();
         }
 

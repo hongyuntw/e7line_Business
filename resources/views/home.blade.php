@@ -19,11 +19,14 @@
     <link rel="stylesheet" href="e7line/css/reset.css">
     <link rel="stylesheet" href="e7line/css/layout.css">
     <link rel="stylesheet" href="e7line/css/home.css">
+{{--    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">--}}
 
     <meta name="theme-color" content="#fafafa">
 </head>
 
 <body>
+
+
 <div class="container">
     <p class="row" align-x="space-between" align-y="center">
         @if (session('member'))
@@ -46,6 +49,11 @@
         {{--        <span>台灣雅瑪多</span>--}}
         {{--        <span>42388877</span>--}}
     </p>
+    @if(session('message'))
+        <div style="text-align: center;color: #a94442;background-color: #f2dede; border-color: #ebccd1">
+            {{Session::get('message')}}
+        </div>
+    @endif
     <form id="e7lineLoginForm" action="https://www.e7line.com/API/outsideLogin.aspx" method="post">
         <input type="hidden" value="{{$email}}" name="Email">
         <input type="hidden" value="{{$pwd}}" name="Password">
