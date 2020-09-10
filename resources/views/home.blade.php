@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="e7line/css/reset.css">
     <link rel="stylesheet" href="e7line/css/layout.css">
     <link rel="stylesheet" href="e7line/css/home.css">
-{{--    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">--}}
+    {{--    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">--}}
 
     <meta name="theme-color" content="#fafafa">
 </head>
@@ -84,7 +84,11 @@
 
 <header class="row" align-y="bottom">
     <img class="logo" src="e7line/img/logo.png" alt="">
-    <span>{{Session::get('member')['Email']}}</span>
+    @if (session('member'))
+        @if(Session::get('member')['Email'])
+            <span>{{Session::get('member')['Email']}}</span>
+        @endif
+    @endif
     <img class="menu" src="e7line/img/menu.svg" alt="">
 
 </header>
