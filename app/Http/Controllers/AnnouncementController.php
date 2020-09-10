@@ -46,7 +46,7 @@ class AnnouncementController extends Controller
         $query = Announcement::query();
         $search_info = '';
 
-        $query->where('type','==',2);
+        $query->where('type','=',2);
         $query->orderBy('create_date','DESC');
 
         if($request->has('search_info')){

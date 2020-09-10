@@ -91,7 +91,6 @@
                                         <input hidden name="date_from" value="{{$date_from}}">
                                         <input hidden name="date_to" value="{{$date_to}}">
                                         <input hidden name="sortBy" value="{{$sortBy}}">
-                                        <input hidden name="type_filter" value="{{$type_filter}}">
 
 
                                     </form>

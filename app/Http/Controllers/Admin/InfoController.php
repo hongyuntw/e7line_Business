@@ -27,9 +27,9 @@ class InfoController extends Controller
         $search_info = '';
         $sortBy = 'create_date';
         $sortBy_text = ['建立日期', '截止日期'];
-        $type_filter = -1;
 
-        $query->where('type','==',2);
+        $query->where('type','=',2);
+
         if(Auth::user()->level != 2){
             $query->where('company_id','=',Auth::user()->company->id);
         }
@@ -38,12 +38,7 @@ class InfoController extends Controller
             $sortBy = $request->input('sortBy');
         }
 
-        if ($request->has('type_filter')) {
-            $type_filter = $request->input('type_filter');
-        }
-        if ($type_filter >= 0) {
-            $query->where('type', '=', $type_filter);
-        }
+
 
 
         if ($request->has('date_from')) {
@@ -85,7 +80,6 @@ class InfoController extends Controller
             'search_type' => $search_type,
             'search_info' => $search_info,
             'sortBy' => $sortBy,
-            'type_filter' => $type_filter,
             'sortBy_text' => $sortBy_text,
         ];
 
