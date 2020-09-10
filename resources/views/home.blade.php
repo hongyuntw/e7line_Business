@@ -44,7 +44,7 @@
             {{--            <a href="{{route('front_end.logout')}}">登出</a>--}}
         @else
             <span>尚未登入</span>
-            <span><a style="text-decoration: none" href="{{route('front_end.login')}}">登入</a></span>
+            <span><a style="text-decoration: none;all: inherit;color: inherit" href="{{route('front_end.login')}}">登入</a></span>
         @endif
         {{--        <span>台灣雅瑪多</span>--}}
         {{--        <span>42388877</span>--}}
@@ -86,7 +86,7 @@
     <img class="logo" src="e7line/img/logo.png" alt="">
     @if (session('member'))
         @if(Session::get('member')['Email'])
-            <span style="height: 30px">Hi. {{Session::get('member')['Email']}}</span>
+            <span style="height: 30px;color: #8e8e8e;font-weight: 600">Hi. {{Session::get('member')['Email']}}</span>
         @endif
     @endif
     <img class="menu" src="e7line/img/menu.svg" alt="">
@@ -104,9 +104,9 @@
             <li><a href="/search">各式查詢</a></li>
         </ul>
         @if (session('member'))
-            <button><a style="text-decoration: none" href="{{route('front_end.logout')}}">登出</a></button>
+            <button><a style="text-decoration: none;color: inherit" href="{{route('front_end.logout')}}">登出</a></button>
         @else
-            <button><a style="text-decoration: none" href="{{route('front_end.login')}}">登入</a></button>
+            <button><a style="text-decoration: none;color: inherit" href="{{route('front_end.login')}}">登入</a></button>
 
         @endif
         <img class="close" src="e7line/img/close.png" alt="">

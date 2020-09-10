@@ -1,9 +1,10 @@
 <!doctype html>
+<!DOCTYPE>
 <html class="no-js" lang="">
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>活動投票</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -58,8 +59,9 @@
             </li>
         @endforeach
 
-
     </ul>
+    {{$open_votes->appends(request()->input())->links()}}
+
 
     <h2 class="close">已結束</h2>
     <ul class="close column">
@@ -78,7 +80,7 @@
                         <span class="center">
                             最高票
                         </span>
-                        <span>{{$close_result[$vote->id]->name}}</span>
+                        <span>{{$close_result[$vote->id]}}</span>
                     </div>
                     <div class="row" align-x="space-between">
                         <h3>{{$vote->title}}</h3>
@@ -87,10 +89,9 @@
                 </a>
             </li>
         @endforeach
-
     </ul>
+    {{$close_votes->appends(request()->input())->links()}}
 </div>
-
 
 
 <header class="row" align-x="center" align-y="bottom">
@@ -98,7 +99,9 @@
         <img src="e7line/img/left.svg" alt="">
         返回
     </a>
-    <h1>活動投票</h1>
+
+    <h1><a href="/vote" style="text-decoration: none;color: inherit;all: inherit">活動投票 </a></h1>
+
     <img class="menu" src="e7line/img/menu.svg" alt="">
 </header>
 </body>

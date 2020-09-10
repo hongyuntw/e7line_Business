@@ -64,17 +64,18 @@
         <img src="e7line/img/left.svg" alt="">
         返回
     </a>
-    <h1>各式查詢</h1>
+    <h1><a href="/search" style="text-decoration: none;color: inherit;all: inherit">各式查詢 </a></h1>
+
     <img class="menu" src="e7line/img/menu.svg" alt="">
 </header>
 <nav class="close">
     <div class="mask"></div>
     <div class="menu">
         <ul>
-            <li><a href="transport.html">好康商品</a></li>
+            <li><a href="https://www.e7line.com/">好康商品</a></li>
             <li><a href="/announcement">福委公告</a></li>
-            <li><a href="vote.html">活動投票</a></li>
-            <li><a href="">各式查詢</a></li>
+            <li><a href="/vote">活動投票</a></li>
+            <li><a href="/search">各式查詢</a></li>
         </ul>
         <button>登出</button>
         <img class="close" src="e7line/img/close.png" alt="">

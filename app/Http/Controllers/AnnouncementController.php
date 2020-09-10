@@ -27,7 +27,10 @@ class AnnouncementController extends Controller
         if($search_info != ''){
             $query->where('title', 'like', "%{$search_info}%");
         }
-        $announcements = $query->get();
+
+
+        $announcements = $query->paginate(15);
+//        $announcements = $query->get();
 
 
         $data = [
@@ -55,7 +58,11 @@ class AnnouncementController extends Controller
         if($search_info != ''){
             $query->where('title', 'like', "%{$search_info}%");
         }
-        $announcements = $query->get();
+
+
+
+        $announcements = $query->paginate(15);
+//        $announcements = $query->get();
 
 
         $data = [

@@ -7,6 +7,7 @@ use App\Vote;
 use App\VoteDetail;
 use App\VoteOption;
 use Illuminate\Http\Request;
+use Mockery\Exception;
 use Session;
 
 class VoteController extends Controller
@@ -20,12 +21,12 @@ class VoteController extends Controller
     {
         //
         if (!Session::get('member')) {
-            Session::flash('message','投票功能必須登入！');
+            Session::flash('message', '投票功能必須登入！');
             return redirect()->back();
         }
 
         $search_info = '';
-        if($request->has('search_info')){
+        if ($request->has('search_info')) {
             $search_info = $request->input('search_info');
         }
 
@@ -49,32 +50,42 @@ class VoteController extends Controller
         $close_query->where('is_active', '=', 1)
             ->where('deadline', '<=', now());
 
-        if($search_info != ''){
+        if ($search_info != '') {
             $open_query->where('title', 'like', "%{$search_info}%");
             $close_query->where('title', 'like', "%{$search_info}%");
         }
 
-        $open_votes = $open_query->orderBy('deadline','ASC')->get();
-        $close_votes = $close_query->orderBy('deadline','DESC')->get();
-        $close_result = [];
+        $open_votes = $open_query->orderBy('deadline', 'ASC')
+            ->paginate(10,['*'],'open_page');
+        $close_votes = $close_query->orderBy('deadline', 'DESC')
+            ->paginate(10,['*'],'close_page');
 
-        foreach ($close_votes as $vote){
-            $option_id = \App\VoteDetail::where('vote_id','=',$vote->id)
+
+
+        $close_result = [];
+        foreach ($close_votes as $vote) {
+            $option_id = \App\VoteDetail::where('vote_id', '=', $vote->id)
                 ->select('vote_option_id')
                 ->groupBy('vote_option_id')
                 ->orderByRaw('COUNT(*) DESC')
-                ->first()->vote_option_id;
-            $vote_option = VoteOption::find($option_id);
-            $close_result[$vote->id] = $vote_option;
-        }
+                ->first();
+            if ($option_id) {
+                $option_id = $option_id->vote_option_id;
+                $vote_option = VoteOption::find($option_id);
+                $close_result[$vote->id] = $vote_option->name;
+            } else {
+                $close_result[$vote->id] = '暫無結果';
+            }
 
+
+        }
 
 
         $data = [
             'open_votes' => $open_votes,
             'close_votes' => $close_votes,
             'close_result' => $close_result,
-            'search_info'=> $search_info,
+            'search_info' => $search_info,
         ];
 
         return view('vote', $data);
@@ -116,14 +127,13 @@ class VoteController extends Controller
 //            單選
             $choices = $request->input('choice');
 
-            if(is_null($choices)){
+            if (is_null($choices)) {
                 $vote_detail = VoteDetail::where('email', '=', $email)->where('vote_id', '=', $vote->id)->first();
                 if ($vote_detail) {
                     $vote_detail->delete();
                 }
                 return redirect('/vote');
             }
-
 
 
             foreach ($choices as $option_id => $on) {
