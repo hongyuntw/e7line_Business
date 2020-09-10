@@ -55,8 +55,13 @@
             </li>
 
         @endforeach
-
     </ul>
+
+    {{$announcements->links('vendor.pagination.e7line')}}
+
+
+
+
 </div>
 
 <header class="row" align-x="center" align-y="bottom">

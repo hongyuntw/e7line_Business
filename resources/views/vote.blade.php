@@ -104,6 +104,24 @@
 
     <img class="menu" src="e7line/img/menu.svg" alt="">
 </header>
+<nav class="close">
+    <div class="mask"></div>
+    <div class="menu">
+        <ul>
+            <li><a href="https://www.e7line.com/">好康商品</a></li>
+            <li><a href="/announcement">福委公告</a></li>
+            <li><a href="/vote">活動投票</a></li>
+            <li><a href="/search">各式查詢</a></li>
+        </ul>
+        @if (session('member'))
+            <button><a style="text-decoration: none;color: inherit" href="{{route('front_end.logout')}}">登出</a></button>
+        @else
+            <button><a style="text-decoration: none;color: inherit" href="{{route('front_end.login')}}">登入</a></button>
+
+        @endif
+        <img class="close" src="e7line/img/close.png" alt="">
+    </div>
+</nav>
 </body>
 <script>
     const menuButton = document.querySelector('header .menu');

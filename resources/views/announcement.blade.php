@@ -58,9 +58,8 @@
                 </a>
             </li>
         @endforeach
-        {{$announcements->links('vendor.pagination.e7line')}}
-
     </ul>
+    {{$announcements->links('vendor.pagination.e7line')}}
 </div>
 
 <header class="row" align-x="center" align-y="bottom">
