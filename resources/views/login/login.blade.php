@@ -105,7 +105,7 @@
 
 <div class="container column" align-x="center" align-y="center">
     <div class="logo row" align-x="center" align-y="bottom">
-        <img class="logo" src="../../e7line/img/logo.png" alt="">
+       <a href="/"><img class="logo" src="../../e7line/img/logo.png" alt=""></a>
         {{--        <button class="column" align-x="center">--}}
         {{--            <img src="../../e7line/img/plus.svg" alt="">--}}
         {{--            <span>福委平台</span>--}}

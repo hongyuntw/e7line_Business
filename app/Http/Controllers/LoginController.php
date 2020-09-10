@@ -117,6 +117,7 @@ class LoginController extends Controller
     public function logout()
     {
         Session::forget('member');
+        Session::flash('message','成功登出！');
         return redirect('/');
     }
 
