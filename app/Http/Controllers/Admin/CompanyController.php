@@ -121,7 +121,6 @@ class CompanyController extends Controller
                 }
 
 
-
 //                check product isbn exists
                 $company = Company::where('tax_id','=',$rename_row['tax_id'])->first();
                 if(!is_null($company)){

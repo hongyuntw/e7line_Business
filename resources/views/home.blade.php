@@ -30,7 +30,7 @@
 <div class="container">
     <p class="row" align-x="space-between" align-y="center">
         @if (session('member'))
-            <span>{{Session::get('member')['Email']}}</span>
+
             <span>
                 @if(Session::get('member')['company'])
                     {{Session::get('member')['company']->name}}({{Session::get('member')['BusinessCode']}})
@@ -84,7 +84,9 @@
 
 <header class="row" align-y="bottom">
     <img class="logo" src="e7line/img/logo.png" alt="">
+    <span>{{Session::get('member')['Email']}}</span>
     <img class="menu" src="e7line/img/menu.svg" alt="">
+
 </header>
 
 
