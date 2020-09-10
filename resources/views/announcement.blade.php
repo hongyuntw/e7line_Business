@@ -41,7 +41,7 @@
                         <div class="column">
                             <div class="row" align-x="space-between">
                             <span class="pink">
-                                @if($ann->type == 2)
+                                @if($ann->type == 0)
                                     【公告】
                                 @elseif($ann->type == 1)
                                     【活動】

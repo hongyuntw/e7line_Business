@@ -99,7 +99,6 @@ Route::group([], function () {
     Route::post('/vote/{vote}','VoteController@submit')->name('vote_submit');
 
 
-
 });
 
 
