@@ -199,7 +199,7 @@ class UserController extends Controller
                     'email' => $rename_row['email'],
                     'password' => Hash::make($rename_row['password']),
                     'company_id' => Auth::user()->company->id,
-                    'type' => $rename_row['type'],
+                    'type' => 1,
                     'level' => $rename_row['level'],
                     'created_at' => now(),
                     'updated_at' => now(),

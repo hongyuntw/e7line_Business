@@ -7,6 +7,7 @@ use App\Imports\CompanyImport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use Mockery\Exception;
 use Session;
 
 class CompanyController extends Controller
@@ -104,6 +105,23 @@ class CompanyController extends Controller
                     'tax_id' => $row[1],
                     'is_active' =>$row[2],
                 ];
+
+                try{
+                    if(!preg_match('/^[0-9]{8}$/', $rename_row['tax_id'])){
+                        $msg = '統編: ' . $rename_row['tax_id'] . '格式錯誤，請檢查一下';
+                        array_push($msgs,$msg);
+                        continue;
+                    }
+
+                }
+                catch (Exception $e){
+                    $msg = '統編: ' . $rename_row['tax_id'] . '格式錯誤，請檢查一下';
+                    array_push($msgs,$msg);
+                    continue;
+                }
+
+
+
 //                check product isbn exists
                 $company = Company::where('tax_id','=',$rename_row['tax_id'])->first();
                 if(!is_null($company)){

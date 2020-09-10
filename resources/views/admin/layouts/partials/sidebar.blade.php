@@ -67,11 +67,11 @@
 
                 @endif
 
-                @php($user_module = \App\Module::where('name','=','管理員查看')->first())
-                @php($permission = \App\CompanyPermission::where('module_id','=',$user_module->id)
-                        ->where('company_id','=',Auth::user()->company_id)->first()->permission)
+{{--                @php($user_module = \App\Module::where('name','=','管理員查看')->first())--}}
+                    {{--                @php($permission = \App\CompanyPermission::where('module_id','=',$user_module->id)--}}
+                    {{--                        ->where('company_id','=',Auth::user()->company_id)->first()->permission)--}}
 
-                @if($permission < 2 or Auth::user()->level == 2)
+                    {{--                @if($permission < 2 or Auth::user()->level == 2)--}}
                     <a href="#">
                         <i class="fa fa-address-book"></i>
                         <span>管理員</span>
@@ -86,7 +86,7 @@
                         @endif
                     </ul>
 
-                @endif
+{{--                @endif--}}
 
                 <a href="#">
                     <i class="fa fa-address-book"></i>

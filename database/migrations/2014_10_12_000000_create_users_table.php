@@ -18,11 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->unsignedInteger('company_id')->default(0);
+            $table->unsignedInteger('company_id')->default(1);
 //            後台管理權限
-            $table->tinyInteger('level')->default(0);
+            $table->tinyInteger('level')->default(1);
 //            會員 or 後台管理
-            $table->tinyInteger('type')->default(0);
+            $table->tinyInteger('type')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
