@@ -102,6 +102,7 @@
 </head>
 
 <body>
+
 <div class="container column" align-x="center" align-y="center">
     <div class="logo row" align-x="center" align-y="bottom">
         <img class="logo" src="../../e7line/img/logo.png" alt="">
@@ -113,8 +114,6 @@
     @if(session('message'))
         <div class="alert alert-danger text-center">{{session('message')}}</div>
     @endif
-
-    @csrf
     <form class="form-horizontal" method="POST" action="{{route('front_end.login')}}">
         {{ csrf_field() }}
 
@@ -132,21 +131,16 @@
         @endif
         <input type="submit" value="登入">
     </form>
+
     <div class="row another" align-x="space-between" align-self="full">
         <a href="https://www.e7line.com/Member/forgetpassword.aspx" class="orange">忘記密碼?</a>
+        &nbsp;&nbsp;
         <a href="https://www.e7line.com/Register/default.aspx" class="green">註冊帳號</a>
     </div>
-    {{--    <span>快速登入</span>--}}
-    {{--    <div class="row social" align-x="center">--}}
-    {{--        <div class="column" align-x="center">--}}
-    {{--            <img src="../../e7lineimg/fb.svg" alt="">--}}
-    {{--            <span>Facebook帳號登入</span>--}}
-    {{--        </div>--}}
-    {{--        <div class="column" align-x="center">--}}
-    {{--            <img src="img/google.svg" alt="">--}}
-    {{--            <span>Google帳號登入</span>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
+
+
 </div>
+
+
 </body>
 </html>
