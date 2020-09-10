@@ -37,7 +37,7 @@
                                             <option value="-1" @if(-1==$type_filter) selected
                                                     @endif>All
                                             </option>
-                                            <option value="0" @if(0==$type_filter) selected @endif>通知</option>
+                                            <option value="0" @if(0==$type_filter) selected @endif>公告</option>
                                             <option value="1" @if(1==$type_filter) selected @endif>活動</option>
 
                                         </select>
@@ -126,7 +126,7 @@
                                         <td>{{$announcement->company->name}}</td>
                                         <td class="text-center">
                                             @if($announcement->type == 0 )
-                                                通知
+                                                公告
                                             @elseif($announcement->type == 1)
                                                 活動
                                             @else

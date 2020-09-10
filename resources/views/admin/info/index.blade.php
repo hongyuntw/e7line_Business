@@ -13,7 +13,7 @@
                 <small></small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> 公告</a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> 規定</a></li>
                 <li class="active">規定列表</li>
             </ol>
         </section>

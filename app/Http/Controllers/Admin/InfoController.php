@@ -29,7 +29,7 @@ class InfoController extends Controller
         $sortBy_text = ['建立日期', '截止日期'];
         $type_filter = -1;
 
-        $query->where('type','>',2);
+        $query->where('type','==',2);
         if(Auth::user()->level != 2){
             $query->where('company_id','=',Auth::user()->company->id);
         }
@@ -133,7 +133,7 @@ class InfoController extends Controller
             'content' => $request->input('content'),
             'user_id'=> Auth::user()->id,
             'company_id' => Auth::user()->company->id,
-            'type' => 3,
+            'type' => 2,
             'create_date' => now(),
             'update_date' => now(),
         ]);

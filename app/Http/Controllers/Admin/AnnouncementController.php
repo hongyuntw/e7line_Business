@@ -29,7 +29,7 @@ class AnnouncementController extends Controller
         $sortBy = 'create_date';
         $type_filter = -1;
 
-        $query->where('type','<=',2);
+        $query->where('type','<=',1);
 
 
         if(Auth::user()->level != 2){
