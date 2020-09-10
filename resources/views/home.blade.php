@@ -86,7 +86,7 @@
     <img class="logo" src="e7line/img/logo.png" alt="">
     @if (session('member'))
         @if(Session::get('member')['Email'])
-            <span>{{Session::get('member')['Email']}}</span>
+            <span style="height: 30px">Hi. {{Session::get('member')['Email']}}</span>
         @endif
     @endif
     <img class="menu" src="e7line/img/menu.svg" alt="">
