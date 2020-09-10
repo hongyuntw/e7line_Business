@@ -27,8 +27,9 @@
 <div class="container">
 
     <div class="search row" align-y="center">
-        <form  action="/vote" method="get">
-            <button style="background-color: Transparent;border: none;cursor:pointer;overflow: hidden;outline:none;" type="submit">
+        <form action="/vote" method="get">
+            <button style="background-color: Transparent;border: none;cursor:pointer;overflow: hidden;outline:none;"
+                    type="submit">
                 <img src="e7line/img/search.svg" style="border: 0" alt=""></button>
             <input name="search_info" type="text" placeholder="請搜尋投票內容" value="{{$search_info}}">
         </form>
@@ -91,7 +92,7 @@
 </div>
 
 <header class="row" align-x="center" align-y="bottom">
-    <a href="home" class="row" align-y="center">
+    <a href="/" class="row" align-y="center">
         <img src="e7line/img/left.svg" alt="">
         返回
     </a>
@@ -99,4 +100,20 @@
     <img class="menu" src="e7line/img/menu.svg" alt="">
 </header>
 </body>
+<script>
+    const menuButton = document.querySelector('header .menu');
+    const close = document.querySelector('nav .close');
+    const nav = document.querySelector('nav');
+    const mask = document.querySelector('nav .mask');
+
+    menuButton.addEventListener('click', () => {
+        nav.classList.remove('close')
+    });
+    close.addEventListener('click', () => {
+        nav.classList.add('close')
+    });
+    mask.addEventListener('click', () => {
+        nav.classList.add('close')
+    });
+</script>
 </html>
