@@ -25,7 +25,7 @@
 
 <body>
 <div class="container">
-    <img src="../../e7line/img/id.png" alt="">
+{{--    <img src="../../e7line/img/id.png" alt="">--}}
     <div class="wrapper">
         <div class="row">
             <span>

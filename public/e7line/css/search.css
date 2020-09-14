@@ -76,10 +76,20 @@ header > .menu {
 
 .grid > li > a > .image {
   height: 107px;
-  background: url('../img/list-image.png');
+  background: url('../img/公告.png');
   background-position: center;
   background-size: cover;
 }
+
+.grid > li > a > .imageSearch {
+  height: 107px;
+  background: url('../img/查詢.png');
+  background-position: center;
+  background-size: cover;
+}
+
+
+
 
 .grid > li > a > .row {
   padding: 10px 8px 12px 13px;

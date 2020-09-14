@@ -35,7 +35,7 @@
         @foreach($announcements as $ann)
             <li>
                 <a href="{{route('content',$ann->id)}}">
-                    <div class="image"></div>
+                    <div class="imageSearch"></div>
                     <div class="row">
                         {{--                        <img class="plus" src="e7line/img/plus.svg" alt="">--}}
                         <div class="column">
