@@ -27,10 +27,18 @@
 	align-items: center;
 }
 
+.column[align-y="center"] {
+	justify-content: center;
+}
+
 .center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.column > [align-self="full"], .row > [align-self="full"] {
+	align-self: stretch;
 }
 
 .grid {

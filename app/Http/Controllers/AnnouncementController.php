@@ -73,7 +73,23 @@ class AnnouncementController extends Controller
 
         return view('search',$data);
     }
-    
+
+
+    public function content($id , Request $request)
+    {
+
+        $ann = Announcement::find($id);
+        $data =[
+            'ann' => $ann,
+        ];
+
+        return view('content',$data);
+
+
+
+    }
+
+
     
     
 

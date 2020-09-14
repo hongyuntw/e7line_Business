@@ -34,7 +34,7 @@
     <ul class="grid">
         @foreach($announcements as $ann)
             <li>
-                <a href="#">
+                <a href="{{route('content',$ann->id)}}">
                     <div class="image"></div>
                     <div class="row">
                         {{--                        <img class="plus" src="e7line/img/plus.svg" alt="">--}}
@@ -57,7 +57,7 @@
         @endforeach
     </ul>
 
-    {{$announcements->links('vendor.pagination.e7line')}}
+{{--    {{$announcements->links('vendor.pagination.e7line')}}--}}
 
 
 

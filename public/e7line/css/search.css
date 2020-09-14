@@ -144,13 +144,13 @@ nav .menu {
   transition: 0.5s;
 }
 
-nav {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
+/*nav {*/
+/*  position: fixed;*/
+/*  left: 0;*/
+/*  top: 0;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*}*/
 
 .mask {
   width: 100%;
@@ -213,3 +213,32 @@ nav .menu .close {
 }
 
 /* menu */
+
+/* pagination */
+/*nav {*/
+/*  margin-top: 23px;*/
+/*}*/
+
+/*nav > .row {*/
+/*  height: 38px;*/
+/*  border-radius: 5px;*/
+/*  border: 1px solid #DEE2E6;*/
+/*}*/
+
+/*nav > .row a:not(:first-child):not(:last-child) {*/
+/*  text-decoration: none;*/
+/*  padding: 8px 12px;*/
+/*  font-weight: 600;*/
+/*  font-size: 17px;*/
+/*  letter-spacing: 0.06em;*/
+/*  color: #cecece;*/
+/*}*/
+
+/*nav > .row a.active {*/
+/*  color: #1f82f9 !important;*/
+/*  cursor: default;*/
+/*}*/
+
+/*nav > .row a + a {*/
+/*  border-left: 1px solid #DEE2E6;*/
+/*}*/

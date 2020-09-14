@@ -91,6 +91,9 @@ Route::group([], function () {
     Route::get('/announcement', 'AnnouncementController@index')->name('announcement');
     Route::get('/search', 'AnnouncementController@index_search')->name('search');
 
+    Route::get('/announcement/{announcement}/content', 'AnnouncementController@content')->name('content');
+    Route::get('/search', 'AnnouncementController@index_search')->name('search');
+
 
 //    vote
     Route::get('/vote', 'VoteController@index')->name('vote');

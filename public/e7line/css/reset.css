@@ -23,7 +23,6 @@ time, mark, audio, video {
 	font-style:normal;
 	font-weight: 300;
 	vertical-align: baseline;
-
 	font-family: "PingFang TC";
 	font-weight: normal;
 	font-size: 16px;
@@ -37,7 +36,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 html{
-    overflow-y: scroll;
+	overflow-y: scroll;
 }
 
 blockquote, q {
@@ -50,22 +49,22 @@ q:before, q:after {
 	content: none;
 }
 
-input, textarea,{
+input, textarea{
 	margin: 0;
 	padding: 0;
 }
 
 ol, ul{
-    list-style:none;
+	list-style:none;
 }
 
 table{
-    border-collapse: collapse; 
-    border-spacing:0;
+	border-collapse: collapse;
+	border-spacing:0;
 }
 
 caption, th{
-    text-align: left;
+	text-align: left;
 }
 
 a:focus {
@@ -75,4 +74,8 @@ a:focus {
 
 body {
 	background-color: #F7F8F9;
+}
+
+a {
+	text-decoration: none;
 }

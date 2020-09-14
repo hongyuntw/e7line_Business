@@ -60,7 +60,7 @@
         @endforeach
 
     </ul>
-    {{$open_votes->appends(request()->input())->links()}}
+    {{$open_votes->appends(request()->input())->links('vendor.pagination.e7line')}}
 
 
     <h2 class="close">已結束</h2>
@@ -90,7 +90,7 @@
             </li>
         @endforeach
     </ul>
-    {{$close_votes->appends(request()->input())->links()}}
+    {{$close_votes->appends(request()->input())->links('vendor.pagination.e7line')}}
 </div>
 
 
